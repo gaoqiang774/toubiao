@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>投票小程序</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Live Voting</p>
+          <h1>轻量投票小程序</h1>
+          <p class="hero-copy">
+            适合班级评选、活动报名、社群互动。支持新增候选项、实时统计和一键清空。
+          </p>
+        </div>
+        <div class="hero-card">
+          <span>当前总票数</span>
+          <strong id="totalVotes">0</strong>
+          <p>数据会自动保存在当前浏览器</p>
+        </div>
+      </section>
+
+      <section class="panel controls">
+        <div>
+          <h2>发起投票</h2>
+          <p>输入候选项名称，马上加入列表。</p>
+        </div>
+        <form id="optionForm" class="option-form">
+          <input
+            id="optionInput"
+            name="option"
+            type="text"
+            maxlength="20"
+            placeholder="例如：1号选手"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">添加选项</button>
+        </form>
+        <div class="action-row">
+          <button id="resetButton" class="ghost-button" type="button">重置全部票数</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="section-head">
+          <div>
+            <h2>投票列表</h2>
+            <p>点击“投一票”即可实时更新结果。</p>
+          </div>
+        </div>
+        <div id="optionList" class="option-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <template id="optionTemplate">
+      <article class="option-card">
+        <div class="option-top">
+          <div>
+            <h3 class="option-name"></h3>
+            <p class="option-meta"></p>
+          </div>
+          <button class="vote-button" type="button">投一票</button>
+        </div>
+        <div class="progress-track">
+          <div class="progress-bar"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
